@@ -1,4 +1,7 @@
+from json import dump
+
 from flask import Flask, jsonify
+from app.db import test
 
 
 def create_app(test_config=None):
@@ -13,7 +16,9 @@ def create_app(test_config=None):
     def hello():
         return jsonify(hello='world')
 
+    @app.route('/dbtest')
+    def db_test():
+        data = test()
+        return jsonify(data)
+
     return app
-
-
-create_app()
