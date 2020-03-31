@@ -1,9 +1,9 @@
 import pymysql
-from env.env import db
+from env.env import dbconfig
 
 
 def test():
-    conn = pymysql.connect(host=db['host'], user=db['user'], password=db['password'], db='devych_server',
+    conn = pymysql.connect(host=dbconfig['host'], user=dbconfig['user'], password=dbconfig['password'], db=dbconfig['db'],
                            charset='utf8')
 
     curs = conn.cursor(pymysql.cursors.DictCursor)
@@ -21,5 +21,6 @@ def test():
     curs.execute(sql)
     rows = curs.fetchall()
 
+    curs.close()
     conn.close()
     return rows

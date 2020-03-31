@@ -19,11 +19,10 @@ def get_last_draw():
         row = curs.fetchone()
         if row is not None:
             lastDraw = row["drwNo"]
+    except ValueError:
+        print(ValueError)
 
-        print('lastDraw is', lastDraw)
-    except:
-        print('error!')
-
+    curs.close()
     conn.close()
     return lastDraw
 
@@ -43,7 +42,7 @@ def insert_all_lottos():
 def insert_one_lotto(num):
     conn = connect_db()
 
-    curs = conn.cursor(pymysql.cursors.DictCursor)
+    curs = conn.cursor()
     sql = """select * from lottoDrawInfo where drwNo = %s """
     curs.execute(sql, (str(num)))
     rows = curs.fetchall()
@@ -72,13 +71,15 @@ def insert_one_lotto(num):
             curs.execute(sql, (
                 drwNo, drwNoDate, firstAccumamnt, firstPrzwnerCo, firstWinamnt, totSellamnt, drwtNo1, drwtNo2, drwtNo3,
                 drwtNo4, drwtNo5, drwtNo6, bnusNo))
+
             conn.commit()
             print(num, 'draw Lotto Information is Succesfully inserted')
-        except:
-            print(num, "draw Lotto isn't finished yet")
+        except ValueError:
+            print(num, "draw Lotto isn't finished yet \nerror:", ValueError)
     else:
         print(num, 'draw Lotto Information already exist')
 
+    curs.close()
     conn.close()
 
 
