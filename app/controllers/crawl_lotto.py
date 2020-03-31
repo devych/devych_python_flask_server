@@ -1,12 +1,6 @@
 import requests
 import pymysql
-from env.env import dbconfig
-
-
-def connect_db():
-    conn = pymysql.connect(host=dbconfig['host'], user=dbconfig['user'], password=dbconfig['password'],
-                           db=dbconfig['db'], charset='utf8')
-    return conn
+from app.controllers import connect_db
 
 
 def get_last_draw():
@@ -41,7 +35,6 @@ def insert_all_lottos():
 
 def insert_one_lotto(num):
     conn = connect_db()
-
     curs = conn.cursor()
     sql = """select * from lottoDrawInfo where drwNo = %s """
     curs.execute(sql, (str(num)))
