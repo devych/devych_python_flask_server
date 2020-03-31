@@ -1,12 +1,5 @@
-import pymysql
-from env.env import dbconfig
-from app.controllers.get_lotto_info import get_last_draw
-
-
-def connect_db():
-    conn = pymysql.connect(host=dbconfig['host'], user=dbconfig['user'], password=dbconfig['password'],
-                           db=dbconfig['db'], charset='utf8')
-    return conn
+from app.controllers import connect_db
+from app.controllers.crawl_lotto import get_last_draw
 
 
 def insert_created_lotto(lists):
@@ -37,7 +30,4 @@ def insert_created_lotto(lists):
 
     curs.close()
     conn.close()
-
-    return
-
 
