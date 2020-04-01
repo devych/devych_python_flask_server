@@ -2,8 +2,7 @@ from env.env import dbconfig
 from flask import jsonify
 import requests
 import random
-from app.controllers.insert_created_lotto import insert_created_lotto
-import pdb
+from app.controllers import insert_created_lotto, get_rank_lotto, select_drw_lotto
 
 
 class Lotto:
@@ -18,7 +17,13 @@ class Lotto:
         return lists
 
     @staticmethod
-    def ranking_lotto_num():
-        pass
+    def get_drw_lotto(num):
+        data = select_drw_lotto(num)
+        return data
+
+    @staticmethod
+    def ranking_lotto_num(bool):
+        data = get_rank_lotto(bool)
+        return data
 
 

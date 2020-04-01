@@ -1,14 +1,16 @@
 import requests
 import pymysql
-from app.controllers import connect_db
 
 
 def get_last_draw():
+    from app.controllers import connect_db
+
     lastDraw = 0
+
     conn = connect_db()
     curs = conn.cursor(pymysql.cursors.DictCursor)
     try:
-        sql = """select * from lottoDrawInfo order by drwNoDate desc limit 1 """
+        sql = """select * from lotto_draw_info order by drwNoDate desc limit 1 """
         curs.execute(sql)
         row = curs.fetchone()
         if row is not None:
@@ -34,9 +36,11 @@ def insert_all_lottos():
 
 
 def insert_one_lotto(num):
+    from app.controllers import connect_db
+
     conn = connect_db()
     curs = conn.cursor()
-    sql = """select * from lottoDrawInfo where drwNo = %s """
+    sql = """select * from lotto_draw_info where drwNo = %s """
     curs.execute(sql, (str(num)))
     rows = curs.fetchall()
     if len(rows) == 0:
@@ -57,7 +61,7 @@ def insert_one_lotto(num):
             drwtNo6 = data['drwtNo6']
             bnusNo = data['bnusNo']
 
-            sql = """insert lottoDrawInfo(drwNo, drwNoDate, firstAccumamnt, firstPrzwnerCo, firstWinamnt, totSellamnt, 
+            sql = """insert lotto_draw_info(drwNo, drwNoDate, firstAccumamnt, firstPrzwnerCo, firstWinamnt, totSellamnt, 
             drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6, bnusNo) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
             %s, %s, %s) """
 
