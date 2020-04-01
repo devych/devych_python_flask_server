@@ -1,6 +1,8 @@
 # devych_python_flask_server
 
-##Installation
+
+## Installation
+
 
 Requirments:
 - python 3.8
@@ -13,7 +15,7 @@ Requirments:
 mysql과 연동하여 api를 제공하는 flask server
 
 
-##Default Setting
+## Default Setting
 
 env directory에 env.py를 생성하고, db dict를 생성한다.
 
@@ -28,20 +30,21 @@ db = {
 
 위 형식과 같이 db의 주요 정보를 입력한다.
 
-##Run Server
+## Run Server
 
-```python
+```
 $export FLASK_ENV=devlopment
 ```
 flask 환경을 development로 설정한다.
 
-```python
+
+```
 $flask run
 ```
 서버를 실행합니다.
 
-##API
 
+## API
 
 | Method           | HTTP request                  | Description                         |
 | ---------------- | ----------------------------- | ----------------------------------- |
