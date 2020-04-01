@@ -1,12 +1,13 @@
-from app.controllers import connect_db
 import pymysql
 
 
 def select_drw_lotto(num):
+    from app.controllers import connect_db
+
     conn = connect_db()
     curs = conn.cursor(pymysql.cursors.DictCursor)
     try:
-        sql = """select * from lottoDrawInfo where drwNo=%s"""
+        sql = """select * from lotto_draw_info where drwNo=%s"""
         curs.execute(sql, (num,))
         rows = curs.fetchone()
 
@@ -16,6 +17,6 @@ def select_drw_lotto(num):
     curs.close()
     conn.close()
 
-    print(rows)
+    # print(rows)
     return rows
 
