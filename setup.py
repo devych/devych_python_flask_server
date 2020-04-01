@@ -13,5 +13,6 @@ setup(
         'requests',
         'Werkzeug',
         'urllib3',
+        'waitress',
     ],
 )
