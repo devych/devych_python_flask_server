@@ -1,6 +1,3 @@
-from env.env import dbconfig
-from flask import jsonify
-import requests
 import random
 from app.controllers import insert_created_lotto, get_rank_lotto, select_drw_lotto
 
