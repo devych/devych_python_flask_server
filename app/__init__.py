@@ -1,8 +1,6 @@
 from flask import Flask, jsonify
-from app.lotto_api.Lotto import Lotto
-from app.controllers import select_drw_lotto
-
-print('app.init')
+from app.api.Lotto import Lotto
+import app.crawler_scheduler as schedule
 
 app = Flask(__name__, instance_relative_config=True)
 
@@ -23,3 +21,5 @@ def create_lotto(num):
 def get_lotto_ranking(boolean):
     data = Lotto.ranking_lotto_num(boolean)
     return jsonify(data=data)
+
+
