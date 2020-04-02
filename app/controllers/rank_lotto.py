@@ -4,7 +4,7 @@ def get_rank_lotto(is_including_bnusNo):
     rank = {}
     conn = connect_db()
     curs = conn.cursor()
-    print(bool(is_including_bnusNo), is_including_bnusNo)
+
     if is_including_bnusNo:
         sql = """select drwtNo1,drwtNo2,drwtNo3,drwtNo4,drwtNo5,drwtNo6,bnusNo from lotto_draw_info"""
     else:

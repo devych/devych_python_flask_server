@@ -1,6 +1,8 @@
+from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, jsonify
 from app.api.Lotto import Lotto
-import app.crawler_scheduler as schedule
+from app.controllers import insert_all_lottos
+
 
 app = Flask(__name__, instance_relative_config=True)
 
@@ -23,3 +25,6 @@ def get_lotto_ranking(boolean):
     return jsonify(data=data)
 
 
+scheduler = BackgroundScheduler()
+scheduler.add_job(insert_all_lottos, 'cron', day_of_week='sat', hour='20-21', minute='50-60')
+scheduler.start()
