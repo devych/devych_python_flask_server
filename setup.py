@@ -15,5 +15,6 @@ setup(
         'urllib3',
         'waitress',
         'apscheduler',
+        'hupper',
     ],
 )
