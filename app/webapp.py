@@ -26,7 +26,7 @@ def get_lotto_ranking(boolean):
 
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(insert_all_lottos, 'cron', day_of_week='sat', hour='20-21', minute='50-59')
+scheduler.add_job(insert_all_lottos, 'cron', day_of_week='sat', hour='21', minute='5-30')
 scheduler.start()
 
 if __name__ == "__main__":

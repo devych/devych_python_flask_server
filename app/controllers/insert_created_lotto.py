@@ -1,8 +1,7 @@
-from app.controllers import get_last_draw
 
 
 def insert_created_lotto(lists):
-    from app.controllers import connect_db
+    from app.controllers import get_last_draw, connect_db
 
     cur_draw = get_last_draw() + 1
 

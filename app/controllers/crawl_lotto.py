@@ -28,7 +28,7 @@ def insert_all_lottos():
     print(curDraw, '회 로또 정보 업데이트를 시도합니다.')
     while 1:
         data = requests.get("http://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=" + str(curDraw))
-        if data.json()["returnValue"] == "success":
+        if data.json()["returnValue"] == "success" and data.json()["totSellamnt"] != 0:
             insert_one_lotto(curDraw)
             print(curDraw, '회 로또 정보가 업데이트되었습니다.')
             curDraw += 1
