@@ -6,13 +6,16 @@ def select_drw_lotto(num):
 
     conn = connect_db()
     curs = conn.cursor(pymysql.cursors.DictCursor)
+
     try:
-        if num:
+        if num != 'all':
             sql = """select * from lotto_draw_info where drwNo=%s"""
+            curs.execute(sql, (num,))
         else:
             sql = """select * from lotto_draw_info"""
-        curs.execute(sql, (num,))
-        rows = curs.fetchone()
+            curs.execute(sql)
+
+        rows = curs.fetchall()
 
     except ValueError:
         print(ValueError)
