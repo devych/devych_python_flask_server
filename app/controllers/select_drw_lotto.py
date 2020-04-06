@@ -14,8 +14,9 @@ def select_drw_lotto(num):
     except ValueError:
         print(ValueError)
 
-    curs.close()
-    conn.close()
+    finally:
+        curs.close()
+        conn.close()
 
     # print(rows)
     return rows

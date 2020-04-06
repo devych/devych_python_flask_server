@@ -43,10 +43,11 @@ def insert_one_lotto(num):
     conn = connect_db()
     curs = conn.cursor()
     sql = """select * from lotto_draw_info where drwNo = %s """
-    curs.execute(sql, (str(num)))
+    curs.execute(sql, (str(num),))
     rows = curs.fetchall()
-    if len(rows) == 0:
-        try:
+    try:
+        if len(rows) == 0:
+
             data = requests.get("http://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=" + str(num))
             data = data.json()
             drwNo = data['drwNo']
@@ -69,16 +70,18 @@ def insert_one_lotto(num):
 
             curs.execute(sql, (
                 drwNo, drwNoDate, firstAccumamnt, firstPrzwnerCo, firstWinamnt, totSellamnt, drwtNo1, drwtNo2, drwtNo3,
-                drwtNo4, drwtNo5, drwtNo6, bnusNo))
+                drwtNo4, drwtNo5, drwtNo6, bnusNo,))
 
             conn.commit()
             print(num, 'draw Lotto Information is Succesfully inserted')
-        except ValueError:
-            print(num, "draw Lotto isn't finished yet \nerror:", ValueError)
-    else:
-        print(num, 'draw Lotto Information already exist')
+        else:
+            print(num, 'draw Lotto Information already exist')
 
-    curs.close()
-    conn.close()
+    except ValueError:
+        print(num, "draw Lotto isn't finished yet \nerror:", ValueError)
+
+    finally:
+        curs.close()
+        conn.close()
 
 

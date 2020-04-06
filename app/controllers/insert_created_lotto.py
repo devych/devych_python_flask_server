@@ -1,10 +1,7 @@
-
-
 def insert_created_lotto(lists):
     from app.controllers import get_last_draw, connect_db
 
     cur_draw = get_last_draw() + 1
-
     conn = connect_db()
     curs = conn.cursor()
 
@@ -22,12 +19,13 @@ def insert_created_lotto(lists):
             sql = """insert user_created_lotto(user, drwNo, drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6) values(
             %s, %s, %s, %s, %s, %s, %s, %s) """
 
-            curs.execute(sql, (user, drwNo, drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6))
+            curs.execute(sql, (user, drwNo, drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6,))
             conn.commit()
             print('Lotto balls are Succesfully created')
+
     except ValueError:
         print(ValueError)
 
-    curs.close()
-    conn.close()
-
+    finally:
+        curs.close()
+        conn.close()
