@@ -7,7 +7,10 @@ def select_drw_lotto(num):
     conn = connect_db()
     curs = conn.cursor(pymysql.cursors.DictCursor)
     try:
-        sql = """select * from lotto_draw_info where drwNo=%s"""
+        if num:
+            sql = """select * from lotto_draw_info where drwNo=%s"""
+        else:
+            sql = """select * from lotto_draw_info"""
         curs.execute(sql, (num,))
         rows = curs.fetchone()
 
