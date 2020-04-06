@@ -21,7 +21,6 @@ def insert_created_lotto(lists):
 
             curs.execute(sql, (user, drwNo, drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6,))
             conn.commit()
-            print('Lotto balls are Succesfully created')
 
     except ValueError:
         print(ValueError)

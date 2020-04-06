@@ -18,8 +18,9 @@ def get_last_draw():
     except ValueError:
         print(ValueError)
 
-    curs.close()
-    conn.close()
+    finally:
+        curs.close()
+        conn.close()
     return lastDraw
 
 
