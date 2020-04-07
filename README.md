@@ -32,16 +32,26 @@ db = {
 
 ## Run Server
 
-```
-$export FLASK_ENV=devlopment
-```
-flask 환경을 development로 설정한다.
+1. git clone을 받고, 아래 명령어를 통해 패키지를 설치한다.
+```shell script
+$ pip3 install -e .
+``` 
 
+2.프로젝트 파일 안 app 디렉토리로 이동한다.
 
+2. 아래 명령어로 서버를 구동한다. 
+```shell script
+$ python3 webapp.py > /dev/null
 ```
-$flask run
+
+3. **_ctrl + z_**를 눌러 프로세스를 중단한다.
+
+4. **_bg_**를 입력하고 백그라운드에서 서버를 실행한다.
+
+5. 아래 명령어를 입력한다.
+```shell script
+$ disown -h
 ```
-서버를 실행합니다.
 
 
 ## API
