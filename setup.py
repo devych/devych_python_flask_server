@@ -13,8 +13,6 @@ setup(
         'requests',
         'Werkzeug',
         'urllib3',
-        'waitress',
         'apscheduler',
-        'hupper',
     ],
 )

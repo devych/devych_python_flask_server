@@ -1,6 +1,5 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, jsonify, request
-from waitress import serve
 from app.api.Lotto import Lotto
 from app.controllers import insert_all_lottos
 
