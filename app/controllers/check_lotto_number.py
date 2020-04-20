@@ -11,8 +11,7 @@ def check_lotto_number(page=1, content_amounts=20000):
     lotto_result_list = []
 
     try:
-        sql = """select id, user, drwNo, drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6 from user_created_lotto 
-        where drwNo <= %s order by id desc limit %s, %s """
+        sql = """select * from user_created_lotto where drwNo <= %s order by id desc limit %s, %s """
 
         curs.execute(sql, (last_draw, first_idx, content_amounts))
 
@@ -40,6 +39,8 @@ def check_lotto_number(page=1, content_amounts=20000):
         curs.close()
         conn.close()
 
+    lotto_result_list.reverse()
+
     return lotto_result_list
 
 
@@ -51,11 +52,11 @@ def check_lotto_count(answer, target):
 
     target_list = [target["drwtNo1"], target["drwtNo2"], target["drwtNo3"], target["drwtNo4"], target["drwtNo5"],
                    target["drwtNo6"]]
-
-    result = [answer['drwNo'], target_list]
+    result = [answer['drwNo'], target['user'], target['created_date'], target_list, []]
 
     for answer in answer_list:
         if answer in target_list:
+            result[4].append(answer)
             count += 1
 
     if count >= 3:
@@ -68,7 +69,7 @@ def check_lotto_rank(list, bnusNo, count):
     elif count == 4:
          list.append('4th')
     elif count == 5:
-         list.append('3th')
+         list.append('3rd')
     elif count == 6 and bnusNo in list:
          list.append('2nd')
     elif count == 6 and bnusNo not in list:
