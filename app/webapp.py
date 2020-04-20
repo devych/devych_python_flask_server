@@ -14,7 +14,7 @@ def get_lotto(num):
 
 
 @app.route('/lotto/create/<num>', methods=['GET'])
-def create_lotto(num):
+def get_create_lotto(num):
     data = Lotto.create_lotto_num(num)
     print('create_lotto', jsonify(request.json))
     return jsonify(data=data)
@@ -22,8 +22,15 @@ def create_lotto(num):
 
 @app.route('/lotto/rank/<boolean>', methods=['GET'])
 def get_lotto_ranking(boolean):
-    data = Lotto.ranking_lotto_num(boolean)
+    data = Lotto.get_ranking_lotto_num(boolean)
     print('get_lotto_ranking', jsonify(request.json))
+    return jsonify(data=data)
+
+
+@app.route('/lotto/check', methods=['GET'])
+def get_created_lotto_result():
+    data = Lotto.get_creted_lotto_result()
+    print('get_creted_lotto_result', jsonify(request.json))
     return jsonify(data=data)
 
 

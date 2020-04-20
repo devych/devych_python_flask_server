@@ -1,5 +1,5 @@
 import random
-from app.controllers import insert_created_lotto, get_rank_lotto, select_drw_lotto
+from app.controllers import insert_created_lotto, get_rank_lotto, select_drw_lotto, check_lotto_number
 
 
 class Lotto:
@@ -19,8 +19,11 @@ class Lotto:
         return data
 
     @staticmethod
-    def ranking_lotto_num(bool):
+    def get_ranking_lotto_num(bool):
         data = get_rank_lotto(bool)
         return data
 
-
+    @staticmethod
+    def get_creted_lotto_result():
+        data = check_lotto_number()
+        return data
