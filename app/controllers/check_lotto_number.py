@@ -40,7 +40,6 @@ def check_lotto_number(page=1, content_amounts=20000):
         curs.close()
         conn.close()
 
-    print(lotto_result_list)
     return lotto_result_list
 
 
