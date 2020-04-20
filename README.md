@@ -56,8 +56,9 @@ $ disown -h
 
 ## API
 
-| Method           | HTTP request                  | Description                         |
-| ---------------- | ----------------------------- | ----------------------------------- |
-| get_lotto        | **GET** /lotto/{number}       | {number}회차 로또 정보 가져오기           |
-| create_lotto     | **GET** /lotto/create/{number}| {number}회(회당 6개 번호) 로또 번호 생성하기|
-| get_lotto_ranking| **GET** /lotto/rank/{number}  | {number} = 1 or 0 <br> 1일 경우 보너스 번호 포함 통계 가져오기<br> 0일 경우 보너스 번호 미포함 통계 가져오기|
+| Method                  | HTTP request                  | Description                         |
+| ----------------        | ----------------------------- | ----------------------------------- |
+| get_lotto               | **GET** /lotto/{number}       | {number}회차 로또 정보 가져오기           |
+| create_lotto            | **GET** /lotto/create/{number}| {number}회(회당 6개 번호) 로또 번호 생성하기|
+| get_lotto_ranking       | **GET** /lotto/rank/{number}  | {number} = 1 or 0 <br> 1일 경우 보너스 번호 포함 통계 가져오기<br> 0일 경우 보너스 번호 미포함 통계 가져오기|
+| get_created_lotto_result| **GET** /lotto/check          | 유저가 생성한 로또번호를 실제 회차 당첨 정보와 확인 후 등수 가져오기|
