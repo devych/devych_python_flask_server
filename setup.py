@@ -14,5 +14,6 @@ setup(
         'Werkzeug',
         'urllib3',
         'apscheduler',
+        'flask-cors',
     ],
 )

@@ -1,9 +1,11 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from app.api.Lotto import Lotto
 from app.controllers import insert_all_lottos
 
 app = Flask(__name__, instance_relative_config=True)
+CORS(app, resources={r'*': {'origins': '*'}})
 
 
 @app.route('/lotto/<num>', methods=['GET'])
