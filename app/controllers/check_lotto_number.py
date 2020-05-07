@@ -32,6 +32,7 @@ def check_lotto_number(page=1, content_amounts=20000):
                 if answer["drwNo"] == target["drwNo"] and check_lotto_count(answer, target) is not None:
                     lotto_result_list.append(check_lotto_count(answer, target))
 
+        lotto_result_list = sorted(lotto_result_list, key=lambda lotto_result_list:lotto_result_list[0])
     except ValueError:
         print(ValueError)
 
@@ -52,11 +53,11 @@ def check_lotto_count(answer, target):
 
     target_list = [target["drwtNo1"], target["drwtNo2"], target["drwtNo3"], target["drwtNo4"], target["drwtNo5"],
                    target["drwtNo6"]]
-    result = [answer['drwNo'], target['user'], target['created_date'], target_list, []]
+    result = [target["id"], answer['drwNo'], target['user'], target['created_date'], target_list, []]
 
     for answer in answer_list:
         if answer in target_list:
-            result[4].append(answer)
+            result[5].append(answer)
             count += 1
 
     if count >= 3:
@@ -65,14 +66,14 @@ def check_lotto_count(answer, target):
 
 def check_lotto_rank(list, bnusNo, count):
     if count == 3:
-         list.append('5th')
+         list.append('5')
     elif count == 4:
-         list.append('4th')
+         list.append('4')
     elif count == 5:
-         list.append('3rd')
+         list.append('3')
     elif count == 6 and bnusNo in list:
-         list.append('2nd')
+         list.append('2')
     elif count == 6 and bnusNo not in list:
-         list.append('1st')
+         list.append('1')
 
     return list
