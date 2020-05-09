@@ -37,7 +37,7 @@ def get_created_lotto_result():
 
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(insert_all_lottos, 'cron', day_of_week='sat', hour='21', minute='5-30')
+scheduler.add_job(insert_all_lottos, 'cron', day_of_week='sat', hour='21-22', minute='5-55/10')
 scheduler.start()
 
 if __name__ == "__main__":

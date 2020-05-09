@@ -78,8 +78,8 @@ def insert_one_lotto(num):
         else:
             print(num, 'draw Lotto Information already exist')
 
-    except ValueError:
-        print(num, "draw Lotto isn't finished yet \nerror:", ValueError)
+    except :
+        print(num, "draw Lotto isn't finished yet")
 
     finally:
         curs.close()
