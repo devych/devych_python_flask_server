@@ -5,7 +5,7 @@ from app.api.Lotto import Lotto
 from app.controllers import insert_all_lottos
 
 app = Flask(__name__, instance_relative_config=True)
-CORS(app, resources={r'*': {'origins': 'http://devych-lotto.s3-website.ap-northeast-2.amazonaws.com'}})
+CORS(app, resources={r'*': {'origins': ['http://ttolotto.me.s3-website.ap-northeast-2.amazonaws.com', 'http://ttolotto.me', 'https://ttolotto.me', 'http://www.ttolotto.me','https://www.ttolotto.me']}})
 
 
 @app.route('/lotto/<num>', methods=['GET'])
