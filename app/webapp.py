@@ -22,6 +22,16 @@ def get_create_lotto(num):
     return jsonify(data=data)
 
 
+@app.route('/lotto/generate/<num>', methods=['POST'])
+def generate_lotto(num):
+    content = request.get_json()
+    # content is dict {"fix":list, "remove":list}
+    addr = request.environ['REMOTE_ADDR']
+    data = Lotto.generate_lotto(num,content["fix"],content["remove"])
+    print('generate_lotto', jsonify(request.json), 'from', addr)
+    return jsonify(data=data)
+
+
 @app.route('/lotto/rank/<boolean>', methods=['GET'])
 def get_lotto_ranking(boolean):
     data = Lotto.get_ranking_lotto_num(boolean)
@@ -34,6 +44,8 @@ def get_created_lotto_result():
     data = Lotto.get_creted_lotto_result()
     print('get_creted_lotto_result', jsonify(request.json))
     return jsonify(data=data)
+
+# @app.route('/lotto/ge?')
 
 
 scheduler = BackgroundScheduler()

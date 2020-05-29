@@ -14,6 +14,27 @@ class Lotto:
         return lists
 
     @staticmethod
+    def generate_lotto(num=1, fix=[], remove=[]):
+        lists = []
+
+        def pick_ball(balls, inner_fix, inner_remove):
+            ball = random.sample(range(1, 46), 1)
+            if ball[0] not in inner_remove and ball[0] not in balls:
+                balls.append(ball[0])
+
+            if len(balls) == 6:
+                balls.sort()
+                lists.append(balls)
+            else:
+                pick_ball(balls, inner_fix, inner_remove)
+
+        while len(lists) < int(num):
+            lotto = fix[:]
+            pick_ball(lotto, fix, remove)
+        insert_created_lotto(lists)
+        return lists
+
+    @staticmethod
     def get_drw_lotto(num):
         data = select_drw_lotto(num)
         return data
@@ -27,3 +48,5 @@ class Lotto:
     def get_creted_lotto_result():
         data = check_lotto_number()
         return data
+
+
