@@ -63,3 +63,4 @@ $ disown -h
 | generate_lotto          | **POST** /lotto/generate/{number}| {number}회(회당 6개 번호) 로또 번호 생성하기<br />body:{"fix" : [10,13],"remove" : [7,16,22,35,43]}<br />fix 고정값 list<br /> remove 제외값 list|
 | get_lotto_ranking       | **GET** /lotto/rank/{number}  | {number} = 1 or 0 <br> 1일 경우 보너스 번호 포함 통계 가져오기<br> 0일 경우 보너스 번호 미포함 통계 가져오기|
 | get_created_lotto_result| **GET** /lotto/check          | 유저가 생성한 로또번호를 실제 회차 당첨 정보와 확인 후 등수 가져오기|
+| get_generated_lottos| **GET** /lotto/generatedLottos          | 유저가 생성한 로또번호 전부 가져오기|
