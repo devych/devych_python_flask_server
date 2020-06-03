@@ -5,6 +5,7 @@ from app.controllers.insert_created_lotto import insert_created_lotto
 from app.controllers.rank_lotto import get_rank_lotto
 from app.controllers.select_drw_lotto import select_drw_lotto
 from app.controllers.check_lotto_number import check_lotto_number
+from app.controllers.generated_lotto import generated_lotto
 
 
 def connect_db():

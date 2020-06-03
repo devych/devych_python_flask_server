@@ -1,5 +1,6 @@
 import random
-from app.controllers import insert_created_lotto, get_rank_lotto, select_drw_lotto, check_lotto_number
+from app.controllers \
+    import insert_created_lotto, get_rank_lotto, select_drw_lotto, check_lotto_number, generated_lotto
 
 
 class Lotto:
@@ -49,4 +50,7 @@ class Lotto:
         data = check_lotto_number()
         return data
 
-
+    @staticmethod
+    def get_genrerated_lottos():
+        data = generated_lotto()
+        return data

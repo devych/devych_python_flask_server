@@ -45,7 +45,12 @@ def get_created_lotto_result():
     print('get_creted_lotto_result', jsonify(request.json))
     return jsonify(data=data)
 
-# @app.route('/lotto/ge?')
+
+@app.route('/lotto/generatedLottos', methods=['GET'])
+def get_genrerated_lottos():
+    data = Lotto.get_genrerated_lottos()
+    print('generated_lotto', jsonify(request.json))
+    return jsonify(data=data)
 
 
 scheduler = BackgroundScheduler()
