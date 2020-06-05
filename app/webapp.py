@@ -24,6 +24,8 @@ def get_create_lotto(num):
 
 @app.route('/lotto/generate/<num>', methods=['POST'])
 def generate_lotto(num):
+    if int(num) > 50:
+        return jsonify("you generate too many lottos")
     content = request.get_json()
     # content is dict {"fix":list, "remove":list}
     addr = request.environ['REMOTE_ADDR']
@@ -50,6 +52,15 @@ def get_created_lotto_result():
 def get_genrerated_lottos():
     data = Lotto.get_genrerated_lottos()
     print('generated_lotto', jsonify(request.json))
+    return jsonify(data=data)
+
+
+@app.route('/lotto/fullyAutoGenerateLottos/<num>', methods=['GET'])
+def fully_auto_generate_lottos(num=5):
+    if int(num) > 50:
+        return jsonify("you generate too many lottos")
+    data = Lotto.get_fully_auto_genrerated_lottos(num)
+    print('fully_auto_generate_lottos', jsonify(request.json))
     return jsonify(data=data)
 
 
