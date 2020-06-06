@@ -1,4 +1,4 @@
-def fully_auto_generate_lottos(num):
+def fully_auto_generate_lottos(num, user_ip):
     from app.controllers import get_rank_lotto, insert_created_lotto
     from app.api.Lotto import Lotto
     import random
@@ -11,8 +11,6 @@ def fully_auto_generate_lottos(num):
 
     data = Lotto.generate_lotto(num, autoFixLottos, autoRemoveLottos)
 
-    print(data)
-
-    insert_created_lotto(data)
+    insert_created_lotto(data, user_ip)
 
     return data

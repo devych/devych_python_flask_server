@@ -1,4 +1,4 @@
-def insert_created_lotto(lists):
+def insert_created_lotto(lists, user="guest"):
     from app.controllers import get_last_draw, connect_db
 
     cur_draw = get_last_draw() + 1
@@ -7,7 +7,7 @@ def insert_created_lotto(lists):
 
     try:
         for arr in lists:
-            user = 'unknown'
+            user = user
             drwNo = cur_draw
             drwtNo1 = arr[0]
             drwtNo2 = arr[1]

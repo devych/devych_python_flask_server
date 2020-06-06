@@ -56,6 +56,6 @@ class Lotto:
         return data
 
     @staticmethod
-    def get_fully_auto_genrerated_lottos(num):
-        data = fully_auto_generate_lottos(num)
+    def get_fully_auto_genrerated_lottos(num, user_ip):
+        data = fully_auto_generate_lottos(num, user_ip)
         return data
