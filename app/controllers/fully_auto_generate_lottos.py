@@ -9,8 +9,6 @@ def fully_auto_generate_lottos(num, user_ip):
     autoFixLottos = random.sample(lotto_rank[:14], 2)
     autoRemoveLottos = random.sample(lotto_rank[-12:], 8)
 
-    data = Lotto.generate_lotto(num, autoFixLottos, autoRemoveLottos)
-
-    insert_created_lotto(data, user_ip)
+    data = Lotto.generate_lotto(num, autoFixLottos, autoRemoveLottos, user_ip)
 
     return data

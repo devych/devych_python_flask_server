@@ -4,7 +4,7 @@ def insert_created_lotto(lists, user="guest"):
     cur_draw = get_last_draw() + 1
     conn = connect_db()
     curs = conn.cursor()
-
+    print(user, 'insert_created_lotto')
     try:
         for arr in lists:
             user = user

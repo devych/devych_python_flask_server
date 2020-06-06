@@ -15,7 +15,7 @@ class Lotto:
         return lists
 
     @staticmethod
-    def generate_lotto(num=1, fix=[], remove=[]):
+    def generate_lotto(num=1, fix=[], remove=[], user="guest"):
         lists = []
 
         def pick_ball(balls, inner_fix, inner_remove):
@@ -32,7 +32,7 @@ class Lotto:
         while len(lists) < int(num):
             lotto = fix[:]
             pick_ball(lotto, fix, remove)
-        insert_created_lotto(lists)
+        insert_created_lotto(lists, user)
         return lists
 
     @staticmethod
