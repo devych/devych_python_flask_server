@@ -59,7 +59,7 @@ def get_genrerated_lottos():
 def fully_auto_generate_lottos(num=5):
     if int(num) > 50:
         return jsonify("you generate too many lottos")
-    addr = request.environ['REMOTE_ADDR']
+    addr = request.environ['REMOTE_ADDR'].split(".")[3]
     data = Lotto.get_fully_auto_genrerated_lottos(num, addr)
     print('fully_auto_generate_lottos', jsonify(request.json))
     return jsonify(data=data)
