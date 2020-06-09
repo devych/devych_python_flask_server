@@ -61,8 +61,9 @@ def fully_auto_generate_lottos(num=5):
         return jsonify("you generate too many lottos")
     addr = request.environ['REMOTE_ADDR'].split(".")[3]
     data = Lotto.get_fully_auto_genrerated_lottos(num, addr)
+    data = list(enumerate(data))
     print('fully_auto_generate_lottos', jsonify(request.json))
-    return jsonify(data=data)
+    return jsonify(data)
 
 
 scheduler = BackgroundScheduler()
