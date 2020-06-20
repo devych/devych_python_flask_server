@@ -3,7 +3,7 @@ def fully_auto_generate_lottos(num, user_ip):
     from app.api.Lotto import Lotto
     import random
 
-    lotto_rank = get_rank_lotto(1)
+    lotto_rank = get_rank_lotto(0)
     lotto_rank = list(map(lambda x: x[0], lotto_rank))
 
     autoFixLottos = random.sample(lotto_rank[:14], 2)
