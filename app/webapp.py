@@ -4,8 +4,9 @@ from flask_cors import CORS
 from app.api.Lotto import Lotto
 from app.controllers import insert_all_lottos
 
-app = Flask(__name__, instance_relative_config=True)
-CORS(app, resources={r'*': {'origins': ['http://localhost:3000','http://ttolotto.me.s3-website.ap-northeast-2.amazonaws.com', 'http://ttolotto.me', 'https://ttolotto.me', 'http://www.ttolotto.me', 'https://www.ttolotto.me']}})
+app = Flask(__name__)
+CORS(app, resources={r'*': {'origins': ['http://localhost:3000', 'http://ttolotto.me.s3-website.ap-northeast-2.amazonaws.com',
+                                        'http://ttolotto.me', 'https://ttolotto.me', 'http://www.ttolotto.me', 'https://www.ttolotto.me']}})
 
 
 @app.route('/lotto/<num>', methods=['GET'])
@@ -29,7 +30,7 @@ def generate_lotto(num):
     content = request.get_json()
     # content is dict {"fix":list, "remove":list}
     addr = request.environ['REMOTE_ADDR']
-    data = Lotto.generate_lotto(num,content["fix"],content["remove"])
+    data = Lotto.generate_lotto(num, content["fix"], content["remove"])
     print('generate_lotto', jsonify(request.json), 'from', addr)
     return jsonify(data=data)
 
@@ -67,7 +68,8 @@ def fully_auto_generate_lottos(num=5):
 
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(insert_all_lottos, 'cron', day_of_week='sat', hour='21-22', minute='5-55/10')
+scheduler.add_job(insert_all_lottos, 'cron', day_of_week='sat',
+                  hour='21-22', minute='5-55/10')
 scheduler.start()
 
 if __name__ == "__main__":
