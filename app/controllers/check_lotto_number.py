@@ -66,11 +66,11 @@ def check_lotto_count(answer, target):
 
 
 def check_lotto_rank(list, bnusNo, count):
-    if count == 3 and bnusNo not in list:
+    if count == 3:
          list.append('5')
-    elif count == 4 and bnusNo not in list:
+    elif count == 4:
          list.append('4')
-    elif count == 5 and bnusNo not in list:
+    elif count == 5:
          list.append('3')
     elif count == 6 and bnusNo in list[5]:
          list.append('2')
