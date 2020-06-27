@@ -53,6 +53,7 @@ def check_lotto_count(answer, target):
 
     target_list = [target["drwtNo1"], target["drwtNo2"], target["drwtNo3"], target["drwtNo4"], target["drwtNo5"],
                    target["drwtNo6"]]
+
     result = [target["id"], answer['drwNo'], target['user'], target['created_date'], target_list, []]
 
     for answer in answer_list:
@@ -60,7 +61,7 @@ def check_lotto_count(answer, target):
             result[5].append(answer)
             count += 1
 
-    if count >= 3:
+    if count >= 3 and answer_list[6] not in result[5] or count == 6 and answer_list[6] in result[5]:
         return check_lotto_rank(result, answer_list[6], count)
 
 
@@ -71,9 +72,9 @@ def check_lotto_rank(list, bnusNo, count):
          list.append('4')
     elif count == 5:
          list.append('3')
-    elif count == 6 and bnusNo in list:
+    elif count == 6 and bnusNo in list[5]:
          list.append('2')
-    elif count == 6 and bnusNo not in list:
+    elif count == 6 and bnusNo not in list[5]:
          list.append('1')
 
     return list
